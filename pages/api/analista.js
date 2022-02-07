@@ -19,10 +19,9 @@ async function analista(request, response){
         const resultado = analistas.recordsets
     
     response.setHeader('Cache-Control','s-maxage=10,stale-while-revalidate');
-        
-    response.json({
-        resultado
-    })
+    
+    response.json(resultado[0]);
+    
 }
 
 export default analista;
