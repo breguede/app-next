@@ -15,8 +15,10 @@ async function analista(request, response){
                   
         let pool = await sql.connect(connStr)
         let analistas = await pool.request()
-          .query('Select * from Rede_WAnalistas_Idioma');
+          .query('Select * from Rede_WAnalistas');
         const resultado = analistas.recordsets
+    
+    response.setHeader('Cache-Control','s-maxage=10,stale-while-revalidate');
         
     response.json({
         resultado
