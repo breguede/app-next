@@ -13,7 +13,7 @@ async function paciente(request, response){
                   
         let pool = await sql.connect(connStr)
         let pacientes = await pool.request()
-          .query('Select * from Rede_WPacientes');
+          .query('Select * from Rede_WPacientes LAST 200');
         const resultado = pacientes.recordsets
     
     response.setHeader('Cache-Control','s-maxage=10,stale-while-revalidate');
