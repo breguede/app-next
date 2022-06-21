@@ -2,10 +2,16 @@ const Server = process.env.SERVER;
 const Database = process.env.DATABASE;
 const User = process.env.USER;
 const Password = process.env.PASSWORD;
+const SECRET_KEY = process.env.SECRET_KEY;
 const sql = require("mssql");
 const connStr = `Server=${Server};Database=${Database};User Id=${User};Password=${Password};`;
 
+
+
 async function analista(request, response){
+    if(request.query.SECRET_KEY!== process.env.SECRET_KEY) {
+      return response.status(401).send('Você não tem autorização para usar esta API')
+    }
     sql.connect(connStr)
          .then(conn => console.log("conectou!"))
          .catch(err => console.log("erro! " + err));

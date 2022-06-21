@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import  { analista } from './api/analista'
 
 function Home(){
     return (
@@ -11,16 +12,11 @@ function Home(){
 }
 
 function Contador(){
-    const [contador, setContador] = useState(1);
-
-    function adicionarContador(){
-        setContador(contador + 1 );
-    }
-
+    let listaAnalista = analista
     return (
         <div>
-            <div>{contador}</div>
-            <button onClick={adicionarContador}>Adionar</button>
+            <div>{listaAnalista}</div>
+            
         </div>
     )    
 }
