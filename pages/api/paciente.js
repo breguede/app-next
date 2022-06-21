@@ -10,11 +10,10 @@ async function paciente(request, response){
          .then(conn => console.log("conectou!"))
          .catch(err => console.log("erro! " + err));
        
-        let nome = "%Danilo%";
+                  
         let pool = await sql.connect(connStr)
         let pacientes = await pool.request()
-          //.input('input_parameter', sql.VarChar(100), nome)          
-          .query(`Select cod_pac, nom_pac, num_cpf, nom_situacao FROM Rede_WPacientes`);
+          .query('Select * from Rede_WPacientes LAST 200');
         const resultado = pacientes.recordsets
     
     response.setHeader('Cache-Control','s-maxage=10,stale-while-revalidate');
