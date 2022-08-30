@@ -38,7 +38,7 @@ async function analistas(request, response) {
       let pool = await sql.connect(connStr);
       let analistas = await pool
         .request()
-        .query(`Select * from Rede_WAnalistas`);
+        .query(`Select * from Rede_WAnalistas ORDER BY nom_analista`);
       const resultado = analistas.recordsets;
 
       response.setHeader("Cache-Control", "s-maxage=10,stale-while-revalidate");
