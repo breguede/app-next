@@ -1,10 +1,5 @@
-const Server = process.env.SERVER;
-const Database = process.env.DATABASE;
-const User = process.env.USER;
-const Password = process.env.PASSWORD;
+import connStr from '../../../config/dbconfig';
 const sql = require("mssql");
-const connStr = `Server=${Server};Database=${Database};User Id=${User};Password=${Password};`;
-
 
 export default async function handler(request, response) {
     const { id } = request.query
