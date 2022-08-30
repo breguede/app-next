@@ -1,5 +1,5 @@
 const sql = require("mssql");
-import connStr from '../../config/dbconfig';
+import connStr from '../../config/dbconfig.js';
 
 async function analistas(request, response) {
   const {
